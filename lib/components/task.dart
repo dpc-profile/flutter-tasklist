@@ -80,7 +80,7 @@ class _TaskState extends State<Task> {
                           height: 52,
                           width: 52,
                           child: ElevatedButton(
-                              onPressed: nivelMaestria >= ProgressBar.maestriaMaxLevel ? null : () {
+                              onPressed: nivelMaestria >=  ProgressBar.maestriaMaxLevel ? null : () {
                                 setState(() {
                                   nivel++;
 
@@ -96,6 +96,9 @@ class _TaskState extends State<Task> {
                                   }
                                 });
                               },
+                            style: ElevatedButton.styleFrom(
+                              primary: ProgressBar.maestria(nivelMaestria),
+                            ),
                               child: Column(
                                 mainAxisAlignment:
                                     MainAxisAlignment.spaceEvenly,
