@@ -15,4 +15,4 @@ For help getting started with Flutter development, view the
 [online documentation](https://docs.flutter.dev/), which offers tutorials,
 samples, guidance on mobile development, and a full API reference.
 
-![](https://github.com/dpc-profile/flutter-tasklist/blob/main/docs/main_screen.gif)
+<img src="https://github.com/dpc-profile/flutter-tasklist/blob/main/docs/main_screen.gif" width="200" height="400" />
