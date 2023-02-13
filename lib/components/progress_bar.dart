@@ -6,7 +6,7 @@ class ProgressBar {
 
   const ProgressBar(this.nivelMaestria);
 
-  static Color funcMaestria(int nivelMaestria) {
+  static Color funcMaestriaColor(int nivelMaestria) {
     if (nivelMaestria == 1) {
       return Colors.blue;
     } else if (nivelMaestria == 2) {
