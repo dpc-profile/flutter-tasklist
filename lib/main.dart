@@ -1,4 +1,3 @@
-import 'package:first_project_alura/screens/create_task_screen.dart';
 import 'package:first_project_alura/screens/initial_screen.dart';
 import 'package:flutter/material.dart';
 
@@ -14,7 +13,6 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Flutter Demo',
       theme: ThemeData(primarySwatch: Colors.blue),
-      // home: const CreateTask(),
       home: const InitialScreen(),
     );
   }
