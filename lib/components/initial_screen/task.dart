@@ -1,5 +1,5 @@
-import 'package:first_project_alura/components/element_task.dart';
-import 'package:first_project_alura/components/progress_bar.dart';
+import 'package:first_project_alura/components/initial_screen/element_task.dart';
+import 'package:first_project_alura/components/initial_screen/progress_bar.dart';
 import 'package:flutter/material.dart';
 
 class Task extends StatefulWidget {
