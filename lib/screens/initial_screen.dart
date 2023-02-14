@@ -1,4 +1,4 @@
-import 'package:first_project_alura/components/task.dart';
+import 'package:first_project_alura/components/initial_screen/task.dart';
 import 'package:flutter/material.dart';
 
 class InitialScreen extends StatefulWidget {
@@ -14,6 +14,7 @@ class _InitialScreenState extends State<InitialScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: const Color(0xFFD0DDED), // Light Blue Grey,
       appBar: AppBar(leading: Container(), title: const Text("Tarefas")),
       body: AnimatedOpacity(
         opacity: opacidade ? 1 : 0,
