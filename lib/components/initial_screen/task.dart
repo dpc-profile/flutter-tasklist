@@ -2,19 +2,19 @@ import 'package:first_project_alura/components/initial_screen/element_task.dart'
 import 'package:first_project_alura/components/initial_screen/progress_bar.dart';
 import 'package:flutter/material.dart';
 
-class Task extends StatefulWidget {
+class TaskCard extends StatefulWidget {
   final String nomeTask;
   final String imgSrc;
   final int dificuldade;
 
-  const Task(this.nomeTask, this.imgSrc, this.dificuldade, {Key? key})
+  const TaskCard(this.nomeTask, this.imgSrc, this.dificuldade, {Key? key})
       : super(key: key);
 
   @override
-  State<Task> createState() => _TaskState();
+  State<TaskCard> createState() => _TaskCardState();
 }
 
-class _TaskState extends State<Task> {
+class _TaskCardState extends State<TaskCard> {
   int nivel = 0;
   int nivelMaestria = 1;
   double valorProgressao = 0;

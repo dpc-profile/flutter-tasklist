@@ -21,27 +21,27 @@ class _InitialScreenState extends State<InitialScreen> {
         duration: const Duration(milliseconds: 500),
         child: ListView(
           children: const [
-            Task(
+            TaskCard(
               "Aprender Flutter",
               "assets/img/aprender_flutter.png",
               3,
             ),
-            Task(
+            TaskCard(
               "Andar de Bike",
               "assets/img/andar_bicicleta.jpg",
               5,
             ),
-            Task(
+            TaskCard(
               "Ler",
               "assets/img/ler.jpg",
               2,
             ),
-            Task(
+            TaskCard(
               "Meditar",
               "assets/img/meditar.jpeg",
               4,
             ),
-            Task(
+            TaskCard(
               "Jogar",
               "assets/img/jogar.jpg",
               1,
