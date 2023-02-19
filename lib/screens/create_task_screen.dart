@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:first_project_alura/components/custom_colors.dart';
 import 'package:flutter/material.dart';
 
@@ -14,10 +16,10 @@ class _CreateTaskState extends State<CreateTask> {
   Color lightBlueGrey = CustomColors.lightBlueGrey;
 
   TextEditingController nameController = TextEditingController();
+  TextEditingController imageController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
-
     return Scaffold(
       backgroundColor: lightBlueGrey,
       appBar: AppBar(title: const Text("Criar Tarefa")),
@@ -120,6 +122,33 @@ class _CreateTaskState extends State<CreateTask> {
                       ],
                     ),
                   ],
+                ),
+              ),
+              TextFormField(
+                onChanged: (text) {
+                  setState(() {});
+                },
+                controller: imageController,
+                decoration: InputDecoration(
+                  labelText: "Imagen",
+                  fillColor: paleGrey, // Pale Gray
+                  filled: true,
+                ),
+              ),
+              Container(
+                height: 100,
+                width: 72,
+                decoration: BoxDecoration(
+                    color: Colors.blue,
+                    borderRadius: BorderRadius.circular(10)),
+                child: ClipRRect(
+                  borderRadius: BorderRadius.circular(10),
+                  child: Image.network(
+                    imageController.text,
+                    errorBuilder: ((BuildContext context, Object error,
+                            StackTrace? stackTrace) =>
+                        Image.asset("assets/img/noPhoto.png")),
+                  ),
                 ),
               ),
               Row(
