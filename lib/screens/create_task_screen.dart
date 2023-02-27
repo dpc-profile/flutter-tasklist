@@ -181,10 +181,7 @@ class _CreateTaskState extends State<CreateTask> {
                                 content: Text("Salvando Tarefa"),
                               ),
                             );
-
-                            print(nameController.text);
-                            print(star);
-                            print(imageController.text);
+                            Navigator.pop(context);
                           }
                         },
                         child: const Text("Adicionar"),
