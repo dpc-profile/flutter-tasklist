@@ -1,3 +1,4 @@
+import 'package:first_project_alura/components/custom_colors.dart';
 import 'package:flutter/material.dart';
 
 class ProgressBar {
@@ -7,21 +8,19 @@ class ProgressBar {
   const ProgressBar(this.nivelMaestria);
 
   static Color funcMaestriaColor(int nivelMaestria) {
-    if (nivelMaestria == 1) {
-      return Colors.blue;
-    } else if (nivelMaestria == 2) {
-      return Color(0xFF219653); // Jungle Green
+    if (nivelMaestria == 2) {
+      return CustomColors.jungleGreen;
     } else if (nivelMaestria == 3) {
-      return Color(0xFFF2C94C); // Maize
+      return CustomColors.maize;
     } else if (nivelMaestria == 4) {
-      return Color(0xFFF2994A); // Pale Orange
+      return CustomColors.paleOrange;
     } else if (nivelMaestria == 5) {
-      return Color(0xFFEB5757); // Coral Pink
+      return CustomColors.coralPink;
     } else if (nivelMaestria >= 6) {
-      return Color(0xFF333333); // Dark Grey
-    } else {
-      return Colors.grey;
+      return CustomColors.darkGrey;
     }
+
+    return Colors.blue;
   }
 
 }

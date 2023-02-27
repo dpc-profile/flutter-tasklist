@@ -1,5 +1,5 @@
-import 'package:first_project_alura/data/task_inherited.dart';
 import 'package:flutter/material.dart';
+import 'package:first_project_alura/data/task_inherited.dart';
 import 'package:first_project_alura/components/custom_colors.dart';
 
 class CreateTask extends StatefulWidget {
@@ -13,8 +13,6 @@ class CreateTask extends StatefulWidget {
 
 class _CreateTaskState extends State<CreateTask> {
   int star = 1;
-  Color paleGrey = CustomColors.paleGrey;
-  Color lightBlueGrey = CustomColors.lightBlueGrey;
 
   final _formKey = GlobalKey<FormState>();
 
@@ -26,7 +24,7 @@ class _CreateTaskState extends State<CreateTask> {
     return Form(
       key: _formKey,
       child: Scaffold(
-        backgroundColor: lightBlueGrey,
+        backgroundColor: CustomColors.lightBlueGrey,
         appBar: AppBar(title: const Text("Criar Tarefa")),
         body: Padding(
           padding: const EdgeInsets.all(8.0),
@@ -39,7 +37,6 @@ class _CreateTaskState extends State<CreateTask> {
                 children: [
                   TextFormField(
                     validator: (value) {
-                      // Verifica se e nulo e vazio
                       if (isTitleValid(titleTask: value)) {
                         return "Insira o nome da tarefa";
                       }
@@ -48,14 +45,14 @@ class _CreateTaskState extends State<CreateTask> {
                     controller: nameController,
                     decoration: InputDecoration(
                       labelText: "Nome da Tarefa",
-                      fillColor: paleGrey, // Pale Gray
+                      fillColor: CustomColors.paleGrey,
                       filled: true,
                     ),
                   ), //NomeTarefa
                   Container(
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(4),
-                      color: paleGrey,
+                      color: CustomColors.paleGrey,
                     ),
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
@@ -69,68 +66,48 @@ class _CreateTaskState extends State<CreateTask> {
                         ),
                         Row(
                           children: [
-                            SizedBox(
-                              width: 40,
-                              child: TextButton(
-                                child: const Icon(Icons.star),
-                                onPressed: () {
-                                  setState(() {
-                                    star = 1;
-                                  });
-                                },
-                              ),
+                            TextButton.icon(
+                              onPressed: () => setState(() {
+                                star = 1;
+                              }),
+                              icon: const Icon(Icons.star),
+                              label: const SizedBox(),
                             ),
-                            SizedBox(
-                              width: 40,
-                              child: TextButton(
-                                child: star > 1
-                                    ? const Icon(Icons.star)
-                                    : const Icon(Icons.star_border),
-                                onPressed: () {
-                                  setState(() {
-                                    star = 2;
-                                  });
-                                },
-                              ),
+                            TextButton.icon(
+                              onPressed: () => setState(() {
+                                star = 2;
+                              }),
+                              icon: star > 1
+                                  ? const Icon(Icons.star)
+                                  : const Icon(Icons.star_border),
+                              label: const SizedBox(),
                             ),
-                            SizedBox(
-                              width: 40,
-                              child: TextButton(
-                                child: star > 2
-                                    ? const Icon(Icons.star)
-                                    : const Icon(Icons.star_border),
-                                onPressed: () {
-                                  setState(() {
-                                    star = 3;
-                                  });
-                                },
-                              ),
+                            TextButton.icon(
+                              onPressed: () => setState(() {
+                                star = 3;
+                              }),
+                              icon: star > 2
+                                  ? const Icon(Icons.star)
+                                  : const Icon(Icons.star_border),
+                              label: const SizedBox(),
                             ),
-                            SizedBox(
-                              width: 40,
-                              child: TextButton(
-                                child: star > 3
-                                    ? const Icon(Icons.star)
-                                    : const Icon(Icons.star_border),
-                                onPressed: () {
-                                  setState(() {
-                                    star = 4;
-                                  });
-                                },
-                              ),
+                            TextButton.icon(
+                              onPressed: () => setState(() {
+                                star = 4;
+                              }),
+                              icon: star > 3
+                                  ? const Icon(Icons.star)
+                                  : const Icon(Icons.star_border),
+                              label: const SizedBox(),
                             ),
-                            SizedBox(
-                              width: 40,
-                              child: TextButton(
-                                child: star > 4
-                                    ? const Icon(Icons.star)
-                                    : const Icon(Icons.star_border),
-                                onPressed: () {
-                                  setState(() {
-                                    star = 5;
-                                  });
-                                },
-                              ),
+                            TextButton.icon(
+                              onPressed: () => setState(() {
+                                star = 5;
+                              }),
+                              icon: star > 4
+                                  ? const Icon(Icons.star)
+                                  : const Icon(Icons.star_border),
+                              label: const SizedBox(),
                             ),
                           ],
                         ),
@@ -145,7 +122,7 @@ class _CreateTaskState extends State<CreateTask> {
                     controller: imageController,
                     decoration: InputDecoration(
                       labelText: "Imagem",
-                      fillColor: paleGrey, // Pale Gray
+                      fillColor: CustomColors.paleGrey,
                       filled: true,
                     ),
                   ), //Url Imagem
@@ -171,7 +148,7 @@ class _CreateTaskState extends State<CreateTask> {
                       ElevatedButton(
                         style: ElevatedButton.styleFrom(
                           foregroundColor: Colors.blue, //Text Color
-                          backgroundColor: paleGrey, //Button Color
+                          backgroundColor: CustomColors.paleGrey, //Button Color
                         ),
                         onPressed: () {},
                         child: const Text("Cancelar"),
@@ -195,8 +172,8 @@ class _CreateTaskState extends State<CreateTask> {
     );
   }
 
-  bool isTitleValid({required String? titleTask}){
-    if (titleTask != null && titleTask.isEmpty){
+  bool isTitleValid({required String? titleTask}) {
+    if (titleTask != null && titleTask.isEmpty) {
       return true;
     }
     return false;
@@ -210,4 +187,5 @@ class _CreateTaskState extends State<CreateTask> {
       Navigator.pop(context);
     }
   }
+
 }

@@ -1,3 +1,4 @@
+import 'package:first_project_alura/components/custom_colors.dart';
 import 'package:first_project_alura/data/task_inherited.dart';
 import 'package:first_project_alura/screens/create_task_screen.dart';
 import 'package:flutter/material.dart';
@@ -15,7 +16,7 @@ class _InitialScreenState extends State<InitialScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: const Color(0xFFD0DDED), // Light Blue Grey,
+      backgroundColor: CustomColors.lightBlueGrey,
       appBar: AppBar(
         leading: Container(),
         title: const Text("Tarefas"),

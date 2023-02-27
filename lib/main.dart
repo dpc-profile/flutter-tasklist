@@ -1,5 +1,5 @@
-import 'package:first_project_alura/data/task_inherited.dart';
 import 'package:flutter/material.dart';
+import 'package:first_project_alura/data/task_inherited.dart';
 import 'package:first_project_alura/screens/initial_screen.dart';
 
 
