@@ -1,4 +1,5 @@
 import 'package:first_project_alura/components/initial_screen/task.dart';
+import 'package:first_project_alura/screens/create_task_screen.dart';
 import 'package:flutter/material.dart';
 
 class InitialScreen extends StatefulWidget {
@@ -15,7 +16,21 @@ class _InitialScreenState extends State<InitialScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: const Color(0xFFD0DDED), // Light Blue Grey,
-      appBar: AppBar(leading: Container(), title: const Text("Tarefas")),
+      appBar: AppBar(
+        leading: Container(),
+        title: const Text("Tarefas"),
+        actions: <Widget>[
+          IconButton(
+              onPressed: () {
+                setState(() {
+                  opacidade = !opacidade;
+                });
+              },
+              icon: opacidade
+                  ? const Icon(Icons.visibility)
+                  : const Icon(Icons.visibility_off)),
+        ],
+      ),
       body: AnimatedOpacity(
         opacity: opacidade ? 1 : 0,
         duration: const Duration(milliseconds: 500),
@@ -53,15 +68,17 @@ class _InitialScreenState extends State<InitialScreen> {
         ),
       ),
       floatingActionButton: FloatingActionButton(
-        onPressed: () {
-          setState(() {
-            opacidade = !opacidade;
-          });
-        },
-        child: opacidade
-            ? const Icon(Icons.remove_red_eye)
-            : const Icon(Icons.remove_red_eye_outlined),
-      ),
+          onPressed: () {
+            setState(() {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => const CreateTask(),
+                ),
+              );
+            });
+          },
+          child: const Icon(Icons.add)),
     );
   }
 }
