@@ -7,15 +7,16 @@ class TaskCard extends StatefulWidget {
   final String imgSrc;
   final int dificuldade;
 
-  const TaskCard(this.nomeTask, this.imgSrc, this.dificuldade, {Key? key})
+  TaskCard(this.nomeTask, this.imgSrc, this.dificuldade, {Key? key})
       : super(key: key);
 
+  int nivel = 0;
   @override
   State<TaskCard> createState() => _TaskCardState();
 }
 
 class _TaskCardState extends State<TaskCard> {
-  int nivel = 0;
+
   int nivelMaestria = 1;
   double valorProgressao = 0;
 
@@ -66,7 +67,7 @@ class _TaskCardState extends State<TaskCard> {
                       ),
                       ElementsTask.levelText(
                         nivelMaestria: nivelMaestria,
-                        nivel: nivel,
+                        nivel: widget.nivel,
                       ),
                     ],
                   ),
@@ -98,16 +99,16 @@ class _TaskCardState extends State<TaskCard> {
             ? null
             : () {
                 setState(() {
-                  nivel++;
+                  widget.nivel++;
 
                   if (valorProgressao >= 1.0) {
                     nivelMaestria++;
                     valorProgressao = 0;
-                    nivel = 0;
+                    widget.nivel = 0;
                   } else {
                     valorProgressao = ElementsTask.funcNewProgress(
                         dificuldade: widget.dificuldade,
-                        nivel: nivel,
+                        nivel: widget.nivel,
                         nivelMaestria: nivelMaestria);
                   }
                 });

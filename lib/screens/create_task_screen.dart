@@ -40,7 +40,7 @@ class _CreateTaskState extends State<CreateTask> {
                   TextFormField(
                     validator: (value) {
                       // Verifica se e nulo e vazio
-                      if (value!.isEmpty) {
+                      if (isTitleValid(titleTask: value)) {
                         return "Insira o nome da tarefa";
                       }
                       return null;
@@ -193,6 +193,13 @@ class _CreateTaskState extends State<CreateTask> {
         ),
       ),
     );
+  }
+
+  bool isTitleValid({required String? titleTask}){
+    if (titleTask != null && titleTask.isEmpty){
+      return true;
+    }
+    return false;
   }
 
   void onButtonAddTask(context, String taskTittle) {
