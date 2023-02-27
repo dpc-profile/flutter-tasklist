@@ -64,53 +64,7 @@ class _CreateTaskState extends State<CreateTask> {
                             style: TextStyle(color: Colors.blue),
                           ),
                         ),
-                        Row(
-                          children: [
-                            TextButton.icon(
-                              onPressed: () => setState(() {
-                                star = 1;
-                              }),
-                              icon: const Icon(Icons.star),
-                              label: const SizedBox(),
-                            ),
-                            TextButton.icon(
-                              onPressed: () => setState(() {
-                                star = 2;
-                              }),
-                              icon: star > 1
-                                  ? const Icon(Icons.star)
-                                  : const Icon(Icons.star_border),
-                              label: const SizedBox(),
-                            ),
-                            TextButton.icon(
-                              onPressed: () => setState(() {
-                                star = 3;
-                              }),
-                              icon: star > 2
-                                  ? const Icon(Icons.star)
-                                  : const Icon(Icons.star_border),
-                              label: const SizedBox(),
-                            ),
-                            TextButton.icon(
-                              onPressed: () => setState(() {
-                                star = 4;
-                              }),
-                              icon: star > 3
-                                  ? const Icon(Icons.star)
-                                  : const Icon(Icons.star_border),
-                              label: const SizedBox(),
-                            ),
-                            TextButton.icon(
-                              onPressed: () => setState(() {
-                                star = 5;
-                              }),
-                              icon: star > 4
-                                  ? const Icon(Icons.star)
-                                  : const Icon(Icons.star_border),
-                              label: const SizedBox(),
-                            ),
-                          ],
-                        ),
+                        Row(children: iconsDifficultyStar()),
                       ],
                     ),
                   ), //Dificuldade
@@ -188,4 +142,18 @@ class _CreateTaskState extends State<CreateTask> {
     }
   }
 
+  List<TextButton> iconsDifficultyStar() {
+    List<TextButton> icons = [];
+
+    for(int i = 1; i<=5; i++){
+      icons.add(TextButton.icon(
+        onPressed: () => setState(() {
+          star = i;
+        }),
+        icon: star >= i ? const Icon(Icons.star) : const Icon(Icons.star_border),
+        label: const SizedBox(),
+      ));
+    }
+    return icons;
+  }
 }
