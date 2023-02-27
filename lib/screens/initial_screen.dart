@@ -1,5 +1,4 @@
 import 'package:first_project_alura/components/initial_screen/task.dart';
-import 'package:first_project_alura/screens/create_task_screen.dart';
 import 'package:flutter/material.dart';
 
 class InitialScreen extends StatefulWidget {
@@ -69,16 +68,13 @@ class _InitialScreenState extends State<InitialScreen> {
       ),
       floatingActionButton: FloatingActionButton(
           onPressed: () {
-            setState(() {
-              Navigator.push(
-                context,
-                MaterialPageRoute(
-                  builder: (context) => const CreateTask(),
-                ),
-              );
-            });
+              onButtonCreateTask(context);
           },
           child: const Icon(Icons.add)),
     );
+  }
+
+  void onButtonCreateTask(context){
+    Navigator.of(context).pushNamed("/createTask");
   }
 }

@@ -175,14 +175,7 @@ class _CreateTaskState extends State<CreateTask> {
                       ),
                       ElevatedButton(
                         onPressed: () {
-                          if (_formKey.currentState!.validate()) {
-                            ScaffoldMessenger.of(context).showSnackBar(
-                              const SnackBar(
-                                content: Text("Salvando Tarefa"),
-                              ),
-                            );
-                            Navigator.pop(context);
-                          }
+                          onButtonAddTask(context, nameController.text);
                         },
                         child: const Text("Adicionar"),
                       ),
@@ -195,5 +188,14 @@ class _CreateTaskState extends State<CreateTask> {
         ),
       ),
     );
+  }
+
+  void onButtonAddTask(context, String taskTittle) {
+    if (_formKey.currentState!.validate()) {
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(content: Text('Salvando Tarefa "$taskTittle"')),
+      );
+      Navigator.pop(context);
+    }
   }
 }
