@@ -1,8 +1,11 @@
+import 'package:first_project_alura/data/task_inherited.dart';
 import 'package:flutter/material.dart';
 import 'package:first_project_alura/components/custom_colors.dart';
 
 class CreateTask extends StatefulWidget {
-  const CreateTask({Key? key}) : super(key: key);
+  const CreateTask({Key? key, required this.taskContext}) : super(key: key);
+
+  final BuildContext taskContext;
 
   @override
   State<CreateTask> createState() => _CreateTaskState();
@@ -175,6 +178,8 @@ class _CreateTaskState extends State<CreateTask> {
                       ),
                       ElevatedButton(
                         onPressed: () {
+                          TaskInherited.of(widget.taskContext).newTask(
+                              nameController.text, imageController.text, star);
                           onButtonAddTask(context, nameController.text);
                         },
                         child: const Text("Adicionar"),
@@ -192,9 +197,9 @@ class _CreateTaskState extends State<CreateTask> {
 
   void onButtonAddTask(context, String taskTittle) {
     if (_formKey.currentState!.validate()) {
-      ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(content: Text('Salvando Tarefa "$taskTittle"')),
-      );
+      ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+        content: Text('Salvando Tarefa "$taskTittle"'),
+      ));
       Navigator.pop(context);
     }
   }

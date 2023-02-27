@@ -48,21 +48,6 @@ class ElementsTask {
     );
   }
 
-  static Container taskImage({required imgSrc}) {
-    return Container(
-      decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(4),
-        color: Colors.black26,
-      ),
-      width: 72,
-      height: 100,
-      child: ClipRRect(
-        borderRadius: BorderRadius.circular(4),
-        child: Image.asset(imgSrc, fit: BoxFit.cover),
-      ),
-    );
-  }
-
   static BoxDecoration taskCard() {
     return BoxDecoration(
       borderRadius: BorderRadius.circular(4),

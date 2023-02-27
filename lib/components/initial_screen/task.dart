@@ -38,8 +38,17 @@ class _TaskCardState extends State<TaskCard> {
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        ElementsTask.taskImage(
-                          imgSrc: widget.imgSrc,
+                        Container(
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(4),
+                            color: Colors.black26,
+                          ),
+                          width: 72,
+                          height: 100,
+                          child: ClipRRect(
+                            borderRadius: BorderRadius.circular(4),
+                            child: searchImage(image: widget.imgSrc, imageFit: BoxFit.cover)
+                          ),
                         ),
                         ElementsTask.nameAndDifficulty(
                           nomeTask: widget.nomeTask,
@@ -70,6 +79,16 @@ class _TaskCardState extends State<TaskCard> {
     );
   }
 
+  Image searchImage({required String image, required imageFit}){
+    if (image.contains('http')){
+      return Image.network(image, errorBuilder: ((BuildContext context, Object error, StackTrace? stackTrace) =>
+          Image.asset("assets/img/noPhoto.png")), fit: imageFit,
+      );
+    }
+
+    return Image.asset(image, fit: imageFit);
+  }
+
   SizedBox elementLevelUpButton() {
     return SizedBox(
       height: 52,
@@ -94,7 +113,7 @@ class _TaskCardState extends State<TaskCard> {
                 });
               },
         style: ElevatedButton.styleFrom(
-          primary: ProgressBar.funcMaestriaColor(nivelMaestria),
+          backgroundColor: ProgressBar.funcMaestriaColor(nivelMaestria),
         ),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
