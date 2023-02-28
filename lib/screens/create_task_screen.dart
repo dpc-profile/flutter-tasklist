@@ -37,7 +37,7 @@ class _CreateTaskState extends State<CreateTask> {
                 children: [
                   TextFormField(
                     validator: (value) {
-                      if (isTitleValid(titleTask: value)) {
+                      if (!isTitleValid(titleTask: value)) {
                         return "Insira o nome da tarefa";
                       }
                       return null;
@@ -95,7 +95,7 @@ class _CreateTaskState extends State<CreateTask> {
                             Image.asset("assets/img/noPhoto.png")),
                       ),
                     ),
-                  ), //Icone Imagem
+                  ), //ImagemIcon
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                     children: [
@@ -109,14 +109,17 @@ class _CreateTaskState extends State<CreateTask> {
                       ),
                       ElevatedButton(
                         onPressed: () {
-                          TaskInherited.of(widget.taskContext).newTask(
-                              nameController.text, imageController.text, star);
-                          onButtonAddTask(context, nameController.text);
+                          if (onButtonAddTask(context, nameController.text)) {
+                            TaskInherited.of(widget.taskContext).newTask(
+                                nameController.text,
+                                imageController.text,
+                                star);
+                          }
                         },
                         child: const Text("Adicionar"),
                       ),
                     ],
-                  ) // Botao Cancelar e Adicionar
+                  ) // Button Cancelar and Adicionar
                 ],
               ),
             ),
@@ -127,33 +130,42 @@ class _CreateTaskState extends State<CreateTask> {
   }
 
   bool isTitleValid({required String? titleTask}) {
+    //A validado isEmpty é quem importa,
+    // o null check é para que o isEmpty nao de erro
     if (titleTask != null && titleTask.isEmpty) {
-      return true;
+      return false;
     }
-    return false;
+
+    return true;
   }
 
-  void onButtonAddTask(context, String taskTittle) {
+  bool onButtonAddTask(context, String taskTittle) {
     if (_formKey.currentState!.validate()) {
       ScaffoldMessenger.of(context).showSnackBar(SnackBar(
         content: Text('Salvando Tarefa "$taskTittle"'),
       ));
       Navigator.pop(context);
+      return true;
     }
+
+    return false;
   }
 
   List<TextButton> iconsDifficultyStar() {
     List<TextButton> icons = [];
 
-    for(int i = 1; i<=5; i++){
+    for (int i = 1; i <= 5; i++) {
       icons.add(TextButton.icon(
         onPressed: () => setState(() {
           star = i;
         }),
-        icon: star >= i ? const Icon(Icons.star) : const Icon(Icons.star_border),
+        icon:
+            star >= i ? const Icon(Icons.star) : const Icon(Icons.star_border),
         label: const SizedBox(),
       ));
     }
+
     return icons;
   }
+
 }

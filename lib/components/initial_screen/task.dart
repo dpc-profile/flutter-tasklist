@@ -118,7 +118,13 @@ class _TaskCardState extends State<TaskCard> {
       );
     }
 
-    return Image.asset(image, fit: imageFit);
+    return Image.asset(
+      image,
+      fit: imageFit,
+      errorBuilder:
+          ((BuildContext context, Object error, StackTrace? stackTrace) =>
+              Image.asset("assets/img/noPhoto.png")),
+    );
   }
 
   SizedBox onButtonLevelUp() {
