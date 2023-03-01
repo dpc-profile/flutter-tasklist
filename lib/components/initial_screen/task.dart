@@ -11,6 +11,7 @@ class TaskCard extends StatefulWidget {
       : super(key: key);
 
   int nivel = 0;
+  int permNivel = 0;
 
   @override
   State<TaskCard> createState() => _TaskCardState();
@@ -41,7 +42,7 @@ class _TaskCardState extends State<TaskCard> {
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(4),
                       color: Colors.white,
-                    ), //taskCard
+                    ), //taskCardBackground
                     height: 100,
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceAround,
@@ -58,7 +59,7 @@ class _TaskCardState extends State<TaskCard> {
                               child: searchImage(
                                   image: widget.imgSrc,
                                   imageFit: BoxFit.cover)),
-                        ),
+                        ), //ImageBackground
                         Column(
                           mainAxisAlignment: MainAxisAlignment.center,
                           crossAxisAlignment: CrossAxisAlignment.start,
@@ -75,7 +76,7 @@ class _TaskCardState extends State<TaskCard> {
                             ), //TaskName
                             Difficulty(levelDifficulty: widget.dificuldade),
                           ],
-                        ),
+                        ), //TaskName and Difficulty
                         onButtonLevelUp(),
                       ],
                     ),
@@ -88,14 +89,14 @@ class _TaskCardState extends State<TaskCard> {
                         padding: const EdgeInsets.all(8.0),
                         child: Text(
                           (nivelMaestria < ProgressBar.maestriaMaxLevel)
-                              ? "Nivel ${widget.nivel}"
+                              ? "Nivel ${widget.permNivel}"
                               : "Nivel Max",
                           style: const TextStyle(
                               color: Colors.white, fontSize: 16),
                         ),
                       ), //LevelUpText
                     ],
-                  ),
+                  ), //ProgressionBar and Level
                 ],
               ),
             ],
@@ -125,7 +126,7 @@ class _TaskCardState extends State<TaskCard> {
     );
   }
 
-  SizedBox onButtonLevelUp() {
+  SizedBox onButtonLevelUp()  {
     return SizedBox(
       height: 52,
       width: 52,
@@ -135,6 +136,7 @@ class _TaskCardState extends State<TaskCard> {
             : () {
                 setState(() {
                   widget.nivel++;
+                  widget.permNivel++;
 
                   if (valorProgressao >= 1.0) {
                     nivelMaestria++;

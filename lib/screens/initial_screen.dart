@@ -6,7 +6,7 @@ import 'package:flutter/material.dart';
 class InitialScreen extends StatefulWidget {
   InitialScreen({Key? key}) : super(key: key);
 
-  int globalLevel = 0;
+  int sumGlobalLevel = 3;
   double globalProgression = 0;
 
   @override
@@ -42,7 +42,7 @@ class _InitialScreenState extends State<InitialScreen> {
                 Padding(
                   padding: const EdgeInsets.only(left: 8),
                   child: Text(
-                    "Nivel ${widget.globalProgression.round()}",
+                    "Nivel ${widget.sumGlobalLevel}",
                     style: const TextStyle(color: Colors.white, fontSize: 16),
                   ),
                 ),
@@ -93,9 +93,7 @@ class _InitialScreenState extends State<InitialScreen> {
 
   void updateGobalLevelAndProgression(context) {
 
-    widget.globalLevel = TaskInherited.of(context).taskList.length;
-
-    widget.globalProgression = widget.globalLevel / 10;
+    // widget.sumGlobalLevel =
 
   }
 
