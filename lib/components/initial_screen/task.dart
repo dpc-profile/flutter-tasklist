@@ -89,7 +89,7 @@ class _TaskCardState extends State<TaskCard> {
                         padding: const EdgeInsets.all(8.0),
                         child: Text(
                           (nivelMaestria < ProgressBar.maestriaMaxLevel)
-                              ? "Nivel ${widget.permNivel}"
+                              ? "Nivel ${widget.nivel}"
                               : "Nivel Max",
                           style: const TextStyle(
                               color: Colors.white, fontSize: 16),

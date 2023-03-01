@@ -6,8 +6,8 @@ import 'package:flutter/material.dart';
 class InitialScreen extends StatefulWidget {
   InitialScreen({Key? key}) : super(key: key);
 
-  int sumGlobalLevel = 3;
-  double globalProgression = 0;
+  int sumGlobalLevel = 0;
+  double globalProgressionBar = 0;
 
   @override
   State<InitialScreen> createState() => _InitialScreenState();
@@ -36,16 +36,16 @@ class _InitialScreenState extends State<InitialScreen> {
                   width: 150,
                   child: LinearProgressIndicator(
                     color: Colors.white,
-                    value: widget.globalProgression,
+                    value: widget.globalProgressionBar,
                   ),
-                ),
+                ), //ProgressionBar
                 Padding(
                   padding: const EdgeInsets.only(left: 8),
                   child: Text(
                     "Nivel ${widget.sumGlobalLevel}",
                     style: const TextStyle(color: Colors.white, fontSize: 16),
                   ),
-                ),
+                ), //Nivel
               ],
             ),
           ),
@@ -63,7 +63,7 @@ class _InitialScreenState extends State<InitialScreen> {
                   }),
               icon: opacidade
                   ? const Icon(Icons.visibility)
-                  : const Icon(Icons.visibility_off)),
+                  : const Icon(Icons.visibility_off)), //ButtonEye
         ],
       ),
       body: AnimatedOpacity(
@@ -92,9 +92,12 @@ class _InitialScreenState extends State<InitialScreen> {
   }
 
   void updateGobalLevelAndProgression(context) {
+    int sumLevel = TaskInherited.of(context).sumLevels().round();
+    int sumdifficulty = TaskInherited.of(context).sumDifficulty().round();
+    int quantTask = TaskInherited.of(context).taskList.length;
 
-    // widget.sumGlobalLevel =
-
+    widget.sumGlobalLevel = ((sumLevel / quantTask)/sumdifficulty).round();
+    widget.globalProgressionBar = ((sumLevel/quantTask)/sumdifficulty) / 150;
   }
 
 }

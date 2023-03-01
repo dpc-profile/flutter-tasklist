@@ -30,4 +30,24 @@ class TaskInherited extends InheritedWidget {
   bool updateShouldNotify(TaskInherited oldWidget) {
     return oldWidget.taskList.length != taskList.length;
   }
+
+  double sumLevels(){
+    double sumLevel = 0;
+
+    for (var task in taskList) {
+      sumLevel = (sumLevel + task.permNivel) * task.dificuldade;
+    }
+
+    return sumLevel;
+  }
+
+  double sumDifficulty(){
+    double sumDif = 0;
+
+    for (var task in taskList){
+      sumDif = (sumDif + task.dificuldade);
+    }
+
+    return sumDif;
+  }
 }
