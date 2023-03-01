@@ -4,7 +4,10 @@ import 'package:first_project_alura/screens/create_task_screen.dart';
 import 'package:flutter/material.dart';
 
 class InitialScreen extends StatefulWidget {
-  const InitialScreen({Key? key}) : super(key: key);
+  InitialScreen({Key? key}) : super(key: key);
+
+  int globalLevel = 0;
+  double globalProgression = 0;
 
   @override
   State<InitialScreen> createState() => _InitialScreenState();
@@ -20,13 +23,44 @@ class _InitialScreenState extends State<InitialScreen> {
       appBar: AppBar(
         leading: Container(),
         title: const Text("Tarefas"),
+        bottom: PreferredSize(
+          preferredSize: const Size.fromHeight(0),
+          child: Padding(
+            padding: const EdgeInsets.only(bottom: 8),
+            child: Row(
+              children: [
+                const SizedBox(
+                  width: 72,
+                ),
+                SizedBox(
+                  width: 150,
+                  child: LinearProgressIndicator(
+                    color: Colors.white,
+                    value: widget.globalProgression,
+                  ),
+                ),
+                Padding(
+                  padding: const EdgeInsets.only(left: 8),
+                  child: Text(
+                    "Nivel ${widget.globalProgression.round()}",
+                    style: const TextStyle(color: Colors.white, fontSize: 16),
+                  ),
+                ),
+              ],
+            ),
+          ),
+        ),
         actions: <Widget>[
           IconButton(
-              onPressed: () {
-                setState(() {
-                  opacidade = !opacidade;
-                });
-              },
+            onPressed: () => setState(() {
+              updateGobalLevelAndProgression(context);
+            }),
+            icon: const Icon(Icons.refresh),
+          ),
+          IconButton(
+              onPressed: () => setState(() {
+                    opacidade = !opacidade;
+                  }),
               icon: opacidade
                   ? const Icon(Icons.visibility)
                   : const Icon(Icons.visibility_off)),
@@ -56,4 +90,13 @@ class _InitialScreenState extends State<InitialScreen> {
           builder: (contextNew) => CreateTask(taskContext: context),
         ));
   }
+
+  void updateGobalLevelAndProgression(context) {
+
+    widget.globalLevel = TaskInherited.of(context).taskList.length;
+
+    widget.globalProgression = widget.globalLevel / 10;
+
+  }
+
 }

@@ -44,7 +44,7 @@ class _TaskCardState extends State<TaskCard> {
                     ), //taskCard
                     height: 100,
                     child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      mainAxisAlignment: MainAxisAlignment.spaceAround,
                       children: [
                         Container(
                           decoration: BoxDecoration(
@@ -83,9 +83,7 @@ class _TaskCardState extends State<TaskCard> {
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      progressBar(
-                        valorProgressao: valorProgressao,
-                      ),
+                      progressBar(valorProgressao: valorProgressao),
                       Padding(
                         padding: const EdgeInsets.all(8.0),
                         child: Text(
