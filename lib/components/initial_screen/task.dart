@@ -45,7 +45,7 @@ class _TaskCardState extends State<TaskCard> {
                     ), //taskCardBackground
                     height: 100,
                     child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceAround,
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         Container(
                           decoration: BoxDecoration(
@@ -78,6 +78,7 @@ class _TaskCardState extends State<TaskCard> {
                           ],
                         ), //TaskName and Difficulty
                         onButtonLevelUp(),
+                        const SizedBox()
                       ],
                     ),
                   ),
@@ -128,6 +129,7 @@ class _TaskCardState extends State<TaskCard> {
 
   SizedBox onButtonLevelUp()  {
     return SizedBox(
+
       height: 52,
       width: 52,
       child: ElevatedButton(
