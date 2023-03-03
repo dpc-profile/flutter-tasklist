@@ -26,7 +26,7 @@ class _InitialScreenState extends State<InitialScreen> {
         bottom: PreferredSize(
           preferredSize: const Size.fromHeight(0),
           child: Padding(
-            padding: const EdgeInsets.only(bottom: 8),
+            padding: const EdgeInsets.only(bottom: 6),
             child: Row(
               children: [
                 const SizedBox(
@@ -56,14 +56,14 @@ class _InitialScreenState extends State<InitialScreen> {
               updateGobalLevelAndProgression(context);
             }),
             icon: const Icon(Icons.refresh),
-          ),
+          ), //RefreshButton
           IconButton(
               onPressed: () => setState(() {
                     opacidade = !opacidade;
                   }),
               icon: opacidade
                   ? const Icon(Icons.visibility)
-                  : const Icon(Icons.visibility_off)), //ButtonEye
+                  : const Icon(Icons.visibility_off)), //EyeButton
         ],
       ),
       body: AnimatedOpacity(
@@ -93,11 +93,9 @@ class _InitialScreenState extends State<InitialScreen> {
 
   void updateGobalLevelAndProgression(context) {
     int sumLevel = TaskInherited.of(context).sumLevels().round();
-    int sumdifficulty = TaskInherited.of(context).sumDifficulty().round();
-    int quantTask = TaskInherited.of(context).taskList.length;
 
-    widget.sumGlobalLevel = ((sumLevel / quantTask)/sumdifficulty).round();
-    widget.globalProgressionBar = ((sumLevel/quantTask)/sumdifficulty) / 150;
+    widget.sumGlobalLevel = sumLevel;
+    widget.globalProgressionBar = sumLevel/100;
   }
 
 }

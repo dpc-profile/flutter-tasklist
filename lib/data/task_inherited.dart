@@ -35,19 +35,9 @@ class TaskInherited extends InheritedWidget {
     double sumLevel = 0;
 
     for (var task in taskList) {
-      sumLevel = (sumLevel + task.permNivel) * task.dificuldade;
+      sumLevel += (task.permNivel/10) * task.dificuldade;
     }
 
     return sumLevel;
-  }
-
-  double sumDifficulty(){
-    double sumDif = 0;
-
-    for (var task in taskList){
-      sumDif = (sumDif + task.dificuldade);
-    }
-
-    return sumDif;
   }
 }
