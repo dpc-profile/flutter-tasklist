@@ -104,7 +104,7 @@ class _CreateTaskState extends State<CreateTask> {
                           foregroundColor: Colors.blue, //Text Color
                           backgroundColor: CustomColors.paleGrey, //Button Color
                         ),
-                        onPressed: () {},
+                        onPressed: () => Navigator.pop(context),
                         child: const Text("Cancelar"),
                       ),
                       ElevatedButton(
